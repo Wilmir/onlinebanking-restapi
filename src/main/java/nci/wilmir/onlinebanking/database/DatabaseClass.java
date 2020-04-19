@@ -26,8 +26,8 @@ public class DatabaseClass {
 			Account account1 = new Account(1, 343434, 22224444, 10000, true, false, getAllTransactions());
 			accounts.add(account1);
 			
-			Transaction transaction1 = new Transaction(1, true, false, "Test transaction 1");
-			Transaction transaction2 = new Transaction(2, false, true, "Test transaction 2");
+			Transaction transaction1 = new Transaction(1, true, false, "Deposited 10000 euros");
+			Transaction transaction2 = new Transaction(2, false, true, "Checked balance");
 			transactions.add(transaction1);
 			transactions.add(transaction2);
 			
