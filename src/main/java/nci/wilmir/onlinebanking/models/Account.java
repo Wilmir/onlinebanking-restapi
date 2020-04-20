@@ -2,7 +2,9 @@ package nci.wilmir.onlinebanking.models;
 
 import java.util.LinkedList;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @XmlRootElement
@@ -14,6 +16,7 @@ public class Account {
 	private boolean isCurrentAccount;
 	private boolean isSavingsAccount;
 	private LinkedList<Transaction> transactions;
+	private LinkedList<Link> links;
 	
 	public Account() {
 		
@@ -84,7 +87,8 @@ public class Account {
 		this.isSavingsAccount = isSavingsAccount;
 	}
 
-
+	@XmlTransient
+	@JsonbTransient
 	public LinkedList<Transaction> getTransactions() {
 		return transactions;
 	}
@@ -93,9 +97,20 @@ public class Account {
 	public void setTransactions(LinkedList<Transaction> transactions) {
 		this.transactions = transactions;
 	}
+
+	public LinkedList<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(LinkedList<Link> links) {
+		this.links = links;
+	}
 	
-	
-	
-	
+	public void addLinks(String url, String rel) {
+		Link link = new Link();
+		link.setLink(url);
+		link.setRel(rel);
+		links.add(link);
+	}
 	
 }

@@ -1,6 +1,7 @@
 package nci.wilmir.onlinebanking.models;
 
 import java.util.Date;
+import java.util.LinkedList;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -12,6 +13,7 @@ public class Transaction {
 	private Date createdDate;
 	private String description;
 	private double transactionAmount;
+	private LinkedList<Link> links;
 	
 	public Transaction(){
 
@@ -73,5 +75,21 @@ public class Transaction {
 	public void setTransactionAmount(double transactionAmount) {
 		this.transactionAmount = transactionAmount;
 	}
+
+	public LinkedList<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(LinkedList<Link> links) {
+		this.links = links;
+	}
+	
+	public void addLinks(String url, String rel) {
+		Link link = new Link();
+		link.setLink(url);
+		link.setRel(rel);
+		links.add(link);
+	}
+	
 	
 }
