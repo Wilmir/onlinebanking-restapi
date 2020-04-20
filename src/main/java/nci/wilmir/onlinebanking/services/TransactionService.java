@@ -29,7 +29,7 @@ public class TransactionService {
 	public Double getBalance(int customerId, int accountNumber) {
 		Account account = findAccount(customerId, accountNumber);	
 		
-		addTransaction(account, false, false, "Checked Balance");
+		addTransaction(account, false, false, "Checked Balance", 0);
 				
 		return account.getCurrentBalance();
 	}
@@ -39,7 +39,7 @@ public class TransactionService {
 	public Double lodgeMoney(int customerId, int accountNumber, double amount) {
 		Account account = findAccount(customerId, accountNumber);	
 		
-		addTransaction(account, true, false, ("Lodged " + amount + " euros"));
+		addTransaction(account, false, true, ("Lodged " + amount + " euros"), amount);
 		
 		Double newBalance = account.getCurrentBalance() + amount;
 		
@@ -54,7 +54,7 @@ public class TransactionService {
 	public Double withdrawMoney(int customerId, int accountNumber, double amount) {
 		Account account = findAccount(customerId, accountNumber);	
 		
-		addTransaction(account, false, true, ("Withdrawn " + amount + " euros"));
+		addTransaction(account, true, false, ("Withdrawn " + amount + " euros"), amount);
 
 		Double newBalance = account.getCurrentBalance() - amount;
 		
@@ -70,8 +70,8 @@ public class TransactionService {
 		Account account = findAccount(customerId, accountNumber);	
 		Account recipientAccount = findRecipientAccount(recipientAccountNumber);
 		
-		addTransaction(account, false, true, ("Transferred " + amount + " euros to " + recipientAccountNumber));
-		addTransaction(recipientAccount, true, false, ("Received " + amount + " euros from " + accountNumber));
+		addTransaction(account, true, false, ("Transferred " + amount + " euros to " + recipientAccountNumber), amount);
+		addTransaction(recipientAccount, false, true, ("Received " + amount + " euros from " + accountNumber), amount);
 		
 		Double newBalance = account.getCurrentBalance() - amount;
 		account.setCurrentBalance(newBalance);
@@ -86,7 +86,7 @@ public class TransactionService {
 	
 	
 	//Helper method to add any type of transaction
-	private void addTransaction(Account account, boolean isDebit, boolean isCredit, String description) {
+	private void addTransaction(Account account, boolean isDebit, boolean isCredit, String description, double transactionAmount) {
 		
 		int id;
 		if(account.getTransactions().size() > 0) {
@@ -95,7 +95,7 @@ public class TransactionService {
 			id = 1;
 		}
 		
-		Transaction transaction = new Transaction(id,isDebit,isCredit,description);		
+		Transaction transaction = new Transaction(id,isDebit,isCredit,description, transactionAmount);		
 		
 		account.getTransactions().add(transaction);
 

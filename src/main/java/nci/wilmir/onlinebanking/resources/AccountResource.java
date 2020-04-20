@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,12 +24,24 @@ public class AccountResource {
 	
 	private AccountService accountService = new AccountService();
 
+	//Send header response to the OPTIONS request from browser's CORS pre-flight initially triggered after the POST method
+	@OPTIONS
+	public Response sendOptions() {
+		return Response.ok("Sent back allowed CORS pre-flight headers")
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "POST")
+				.header("Access-Control-Allow-Headers", "Content-Type")
+				.build();
+	}
+	
 	@GET
-	public LinkedList<Account> getAccounts(@PathParam("customerId") int customerId) {
+	public Response getAccounts(@PathParam("customerId") int customerId) {
 		LinkedList<Account> accounts = accountService.getAllAccounts(customerId);
 
-		return accounts;
-	}
+		return Response.status(Status.OK)
+				.header("Access-Control-Allow-Origin", "*")
+				.entity(accounts)
+				.build();	}
 
 	//Create new account
 	@POST

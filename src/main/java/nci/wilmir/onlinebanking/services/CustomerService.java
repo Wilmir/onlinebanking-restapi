@@ -3,6 +3,7 @@ package nci.wilmir.onlinebanking.services;
 import java.util.LinkedList;
 
 import nci.wilmir.onlinebanking.database.DatabaseClass;
+import nci.wilmir.onlinebanking.models.Account;
 import nci.wilmir.onlinebanking.models.Customer;
 
 
@@ -45,7 +46,7 @@ public class CustomerService {
 		int id = customers.getLast().getCustomerId() + 1;
 		
 		customer.setCustomerId(id);
-		
+		customer.setAccounts(new LinkedList<Account>());
 		customers.add(customer);	
 		
 		return customer;

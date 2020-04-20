@@ -30,8 +30,15 @@ public class AccountService {
 	//Create a new account for the customer
 	public Account addAccount(int customerId, Account account) {
 		Customer customer = findCustomer(customerId);
-
-		int id = customer.getAccounts().getLast().getId() + 1;
+		
+		int id;
+		if(customer.getAccounts().size() > 0) {
+			id = customer.getAccounts().getLast().getId() + 1;
+		}else {
+			id = 1;
+		}
+		
+		
 		account.setId(id);
 		account.setAccountNumber(generateAccountNumber(customerId));
 		account.setTransactions(new LinkedList<Transaction>());
@@ -41,7 +48,6 @@ public class AccountService {
 		return account;
 			
 	}
-	
 	
 	//Close an account 
 	public Account removeAccount(int customerId, int accountNumber) {

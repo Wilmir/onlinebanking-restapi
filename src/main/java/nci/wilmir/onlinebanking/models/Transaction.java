@@ -11,17 +11,19 @@ public class Transaction {
 	private boolean isCredit;
 	private Date createdDate;
 	private String description;
+	private double transactionAmount;
 	
 	public Transaction(){
 
 	}
 
-	public Transaction(int id, boolean isDebit, boolean isCredit, String description) {
+	public Transaction(int id, boolean isDebit, boolean isCredit, String description, double transactionAmount) {
 		this.id = id;
 		this.isDebit = isDebit;
 		this.isCredit = isCredit;
 		this.createdDate = new Date();
 		this.description = description;
+		this.transactionAmount = transactionAmount;
 	}
 
 	public int getId() {
@@ -62,6 +64,14 @@ public class Transaction {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getTransactionAmount() {
+		return transactionAmount;
+	}
+
+	public void setTransactionAmount(double transactionAmount) {
+		this.transactionAmount = transactionAmount;
 	}
 	
 }
