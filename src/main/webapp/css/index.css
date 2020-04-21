@@ -1,0 +1,338 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.entry{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.login{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    box-shadow: 2px 2px 8px #e5e5e5;    
+    border-radius: 5px;
+    margin: 20px 20px 0px 20px;
+    padding: 20px;
+    width: 300px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+
+input[type="text"], input[type="password"]{
+    margin: 10px;
+    padding: 12px 22px;
+    border: 1px solid #c4dbe7;
+    border-radius: 18px;
+    height: 36px;
+    width: 240px;
+}
+
+input[type="text"]:hover, form input[type="password"]:hover{
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 10px #e5e5e5;
+    transition: all .35s ease
+}
+
+.radio-btn{
+    display: flex;
+    margin-top: 10px;
+    padding: 0 30px;
+    justify-content: space-around;s
+}
+
+label {
+    font-weight: normal !important;
+}
+
+
+.submit-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="submit"], .new-account-button{
+    background-color: #091527;
+    border: 1px solid #091527;  
+    border-radius: 4px;
+    color: white;
+    margin: 11px 4px;
+    padding: 0 16px;
+    height: 36px;
+    text-align: center;
+    width: 235px;
+
+}
+
+
+input[type="submit"]:hover, .new-account-button:hover{
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      background-color: #688298;
+      border: 1px solid #688298;
+      color: white;
+      transition: all .35s ease
+}
+
+
+input:focus{
+    outline: none;
+}
+
+#notice{
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #688298;
+    line-height: 10px;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+/* Adds style to input placeholder */
+input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder{
+    color: #bbbbbb;
+}
+
+input[type="text"]::-moz-placeholder, input[type="password"]::-moz-placeholder{
+    color: #bbbbbb;
+}
+
+input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder{
+    color: #bbbbbb;
+}
+
+input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder{
+    color: #bbbbbb;
+}
+
+/* Removes the autocomplete background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/*SIGN UP MODAL*/
+/*The Sign Up Button*/
+.signupquestion{
+    color: gray;
+}
+
+#signupoption{
+    color:#0d98ba;
+}
+
+#signupoption:hover,
+#signupoption:focus {
+  color: #688298;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* The Modal (background) */
+.modalSignUp{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modalSignUpContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+/*Sign Up Widget*/
+.signup{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 5px 20px 0px 20px;
+    padding: 5px 20px 20px 20px;;
+    width: 300px;
+}
+
+/* The Close Button */
+.closeSignUp, 
+.closeNewAccount {
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    color: #bbbbbb;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .closeSignUp:hover,
+  .closeSignUp:focus,
+  .closeNewAccount:hover,
+  .closeNewAccount:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 1s ease;
+  }
+
+
+/*CUSTOMER WIDGET*/
+.customer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.customer-body{
+    display: flex;
+    flex-direction: row;
+}
+
+.accounts-section{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.transactions-section{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+
+}
+
+.customer-details{
+    margin: 20px auto;
+}
+
+.customer-greeting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+.customer-table{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-column div{
+    padding: 5px;
+    text-align: center;
+}
+
+.customer-column .customer-title{
+    border-bottom: 1px solid #f5f5f5;  
+    color: gray;
+}
+
+
+.customer-column .customer-data{
+    font-weight: bold;
+}
+
+/*ACCOUNT CARD*/
+.account-card{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid transparent;
+    box-shadow: 2px 2px 8px #e5e5e5;    
+    border-radius: 5px;
+}
+
+.account-card:first-child{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.account-card:hover{
+    box-shadow: 2px 2px 8px #c4dbe7;    
+    transition: all 0.8 ease;
+}
+
+
+.account-details{
+    display: flex;
+    flex-direction: row;
+}
+
+.account-card-column:nth-child(2){
+    padding-left: 10px;
+    border-left: 1px solid #f5f5f5;
+}
+
+.account-card-column:nth-child(1){
+    padding-right: 10px;
+    color:#bbbbbb;
+
+}
+
+.account-card-column:last-child{
+    margin: auto;
+}
+
+.account-type{
+    font-weight: bold;
+    color: #688298
+}
+
+button:focus { 
+    outline:0 !important;
+}
