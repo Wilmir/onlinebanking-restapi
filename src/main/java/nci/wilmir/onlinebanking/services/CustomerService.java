@@ -44,7 +44,6 @@ public class CustomerService {
 	
 	public Customer addCustomer(Customer customer) {
 		int id = customers.getLast().getCustomerId() + 1;
-		
 		customer.setCustomerId(id);
 		customer.setAccounts(new LinkedList<Account>());
 		customers.add(customer);	

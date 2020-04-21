@@ -38,8 +38,8 @@ public class AccountService {
 			id = 1;
 		}
 		
-		
 		account.setId(id);
+		account.setSortCode(Account.SORTCODE);
 		account.setAccountNumber(generateAccountNumber(customerId));
 		account.setTransactions(new LinkedList<Transaction>());
 		
