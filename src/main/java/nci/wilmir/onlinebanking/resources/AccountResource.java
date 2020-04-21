@@ -51,8 +51,6 @@ public class AccountResource {
 				.build();	}
 
 
-
-
 	//Create a new account
 	@POST
 	public Response addNewAccount(@PathParam("customerId") int customerId, Account newAccount, @Context UriInfo uriInfo) {
@@ -91,7 +89,7 @@ public class AccountResource {
 		account.setLinks(new LinkedList<Link>());
 		account.addLinks(getUriForSelf(customerId, uriInfo, account), "self");
 		account.addLinks(getUriForCustomer(customerId, uriInfo, account), "customer");
-		account.addLinks(getUriForTransaction(customerId, uriInfo, account), "transaction");
+		account.addLinks(getUriForTransaction(customerId, uriInfo, account), "transactions");
 	}
 	
 	private String getUriForSelf(int customerId, UriInfo uriInfo, Account account) {

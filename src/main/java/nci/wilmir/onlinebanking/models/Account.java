@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Account {
 	private int id;
 	private int sortCode;
+	private final static int SORTCODE = 990204;
 	private int accountNumber;
 	private double currentBalance;
 	private boolean isCurrentAccount;
@@ -22,10 +23,10 @@ public class Account {
 		
 	}
 	
-	public Account(int id, int sortCode, int accountNumber, double currentBalance, boolean isCurrentAccount,
+	public Account(int id, int accountNumber, double currentBalance, boolean isCurrentAccount,
 			boolean isSavingsAccount, LinkedList<Transaction> transactions) {
 		this.id = id;
-		this.sortCode = sortCode;
+		this.sortCode = SORTCODE;
 		this.accountNumber = accountNumber;
 		this.currentBalance = currentBalance;
 		this.isCurrentAccount = isCurrentAccount;

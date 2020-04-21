@@ -23,7 +23,7 @@ public class DatabaseClass {
 			customers.add(customer1);
 			
 			
-			Account account1 = new Account(1, 343434, 22224444, 10000, true, false, getAllTransactions());
+			Account account1 = new Account(1, 22224444, 10000, true, false, getAllTransactions());
 			accounts.add(account1);
 			
 			Transaction transaction1 = new Transaction(1, true, false, "Deposited 10000 euros", 10000);

@@ -70,8 +70,7 @@ public class CustomerResource {
 	}
 
 
-
-
+	//Get customer by ID
 	@GET
 	@Path("/{customerId}")
 	public Response getCustomer(@PathParam("customerId") int customerId, @Context UriInfo uriInfo) {
@@ -84,7 +83,7 @@ public class CustomerResource {
 
 	}	
 
-	
+	//Add customer upon registration
 	@POST
 	public Response addCustomer(Customer c, @Context UriInfo uriInfo) {
 		Customer customer = customerService.addCustomer(c);
@@ -96,7 +95,7 @@ public class CustomerResource {
 
 	}
 
-
+	//Remove customer upon deactivation
 	@DELETE
 	@Path("/{customerId}")
 	public Response deleteCustomer(@PathParam("customerId") int customerId)
@@ -108,6 +107,8 @@ public class CustomerResource {
 				.build();	
 	}
 	
+	
+	//Implements the accounts subresource
 	@Path("/{customerId}/accounts")
 	public AccountResource getAccountResource() {
 		return new AccountResource();
@@ -118,7 +119,7 @@ public class CustomerResource {
 	private void addURIs(UriInfo uriInfo, Customer customer) {
 		customer.setLinks(new LinkedList<Link>());
 		customer.addLink(getUriForSelf(uriInfo, customer), "self");
-		customer.addLink(getUriForAccounts(uriInfo, customer), "account");
+		customer.addLink(getUriForAccounts(uriInfo, customer), "accounts");
 	}
 	
 	
