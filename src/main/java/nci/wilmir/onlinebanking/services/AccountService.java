@@ -27,6 +27,24 @@ public class AccountService {
 	}
 	
 	
+	//Get a specific account by AccountNumber
+	public Account getAccount(int customerId, int accountNumber) {
+		Customer customer = findCustomer(customerId);
+		
+		LinkedList<Account> customerAccounts = customer.getAccounts();		
+		
+		for(Account account : customerAccounts) {
+			if(account.getAccountNumber() == accountNumber) {
+				return account;
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	
+	
 	//Create a new account for the customer
 	public Account addAccount(int customerId, Account account) {
 		Customer customer = findCustomer(customerId);

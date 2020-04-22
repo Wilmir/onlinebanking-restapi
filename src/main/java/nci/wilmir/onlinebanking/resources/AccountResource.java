@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -26,16 +25,6 @@ public class AccountResource {
 	
 	private AccountService accountService = new AccountService();
 
-	//Send header response to the OPTIONS request from browser's CORS pre-flight initially triggered after the POST method
-	@OPTIONS
-	public Response sendOptions() {
-		return Response.ok("Sent back allowed CORS pre-flight headers")
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "POST")
-				.header("Access-Control-Allow-Headers", "Content-Type")
-				.build();
-	}
-	
 	
 	//Return all the accounts of a customer
 	@GET
@@ -45,12 +34,19 @@ public class AccountResource {
 			addURIs(customerId, uriInfo, account);
 		}
 		
-		return Response.status(Status.OK)
-				.header("Access-Control-Allow-Origin", "*")
-				.entity(accounts)
-				.build();	}
+		return Response.status(Status.OK).entity(accounts).build();	}
 
 
+	@GET 
+	@Path("/{accountNumber}")
+	public Response getAccount(@PathParam("customerId") int customerId, 
+			@PathParam("accountNumber") int accountNumber) {
+		Account account = accountService.getAccount(customerId, accountNumber);
+		return Response.status(Status.OK).entity(account).build();
+
+	}
+	
+	
 	//Create a new account
 	@POST
 	public Response addNewAccount(@PathParam("customerId") int customerId, Account newAccount, @Context UriInfo uriInfo) {
@@ -58,10 +54,7 @@ public class AccountResource {
 		addURIs(customerId, uriInfo, account);
 
 
-		return Response.status(Status.OK)
-				.header("Access-Control-Allow-Origin", "*")
-				.entity(account)
-				.build();
+		return Response.status(Status.OK).entity(account).build();
 	}
 
 
@@ -70,10 +63,9 @@ public class AccountResource {
 	@Path("/{accountNumber}")
 	public Response removeAccount(@PathParam("customerId") int customerId, 
 			@PathParam("accountNumber") int accountNumber) {
+		
 		Account account = accountService.removeAccount(customerId, accountNumber);
-		return Response.status(Status.OK)
-				.header("Access-Control-Allow-Origin", "*")
-				.entity(account).build();
+		return Response.status(Status.OK).entity(account).build();
 
 	}
 

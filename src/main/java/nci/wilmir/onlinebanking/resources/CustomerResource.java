@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -29,17 +28,6 @@ public class CustomerResource {
 
 	private CustomerService customerService = new CustomerService();
 
-	
-	//Send header response to the OPTIONS request from browser's CORS pre-flight initially triggered after the POST method
-	@OPTIONS
-	public Response sendOptions() {
-		return Response.ok("Sent back allowed CORS pre-flight headers")
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "POST")
-				.header("Access-Control-Allow-Headers", "Content-Type")
-				.build();
-	}
-	
 
 	//Get customer upon login
 	@GET
@@ -52,19 +40,13 @@ public class CustomerResource {
 			Customer customer =  customerService.getFilteredCustomer(email, password);
 			addURIs(uriInfo, customer);
 
-			return Response.status(Status.OK)
-					.entity(customer)
-					.header("Access-Control-Allow-Origin", "*")
-					.build();	
+			return Response.status(Status.OK).entity(customer).build();	
 		}else {
 			LinkedList<Customer> customers = customerService.getAllCustomers();
 			for(Customer customer: customers) {
 				addURIs(uriInfo, customer);
 			}
-			return Response.status(Status.OK)
-					.entity(customers)
-					.header("Access-Control-Allow-Origin", "*")
-					.build();	
+			return Response.status(Status.OK).entity(customers).build();	
 		}
 	
 	}
@@ -76,11 +58,7 @@ public class CustomerResource {
 	public Response getCustomer(@PathParam("customerId") int customerId, @Context UriInfo uriInfo) {
 		Customer customer = customerService.getCustomer(customerId);
 		addURIs(uriInfo, customer);
-		return Response.status(Status.OK)
-				.entity(customer)
-				.header("Access-Control-Allow-Origin", "*")
-				.build();	
-
+		return Response.status(Status.OK).entity(customer).build();	
 	}	
 
 	//Add customer upon registration
@@ -88,11 +66,7 @@ public class CustomerResource {
 	public Response addCustomer(Customer c, @Context UriInfo uriInfo) {
 		Customer customer = customerService.addCustomer(c);
 		addURIs(uriInfo, customer);
-		return Response.status(Status.OK)
-				.entity(customer)
-				.header("Access-Control-Allow-Origin", "*")
-				.build();	
-
+		return Response.status(Status.OK).entity(customer).build();	
 	}
 
 	//Remove customer upon deactivation
@@ -101,10 +75,7 @@ public class CustomerResource {
 	public Response deleteCustomer(@PathParam("customerId") int customerId)
 	{
 		Customer customer = customerService.removeCustomer(customerId);
-		return Response.status(Status.OK)
-				.entity(customer)
-				.header("Access-Control-Allow-Origin", "*")
-				.build();	
+		return Response.status(Status.OK).entity(customer).build();	
 	}
 	
 	

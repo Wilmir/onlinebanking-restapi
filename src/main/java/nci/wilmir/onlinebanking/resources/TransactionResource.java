@@ -24,7 +24,7 @@ import nci.wilmir.onlinebanking.services.TransactionService;
 public class TransactionResource {
 
 	private TransactionService transactionService = new TransactionService();
-
+	
 	@GET
 	public Response getAllTransactions(@PathParam("customerId") int customerId, 
 			@PathParam("accountNumber") int accountNumber,
@@ -34,10 +34,7 @@ public class TransactionResource {
 		for(Transaction transaction : transactions) {
 			addURIs(customerId, accountNumber, uriInfo, transaction);			
 		}
-		return Response.status(Status.OK)
-				.header("Access-Control-Allow-Origin", "*")
-				.entity(transactions)
-				.build();
+		return Response.status(Status.OK).entity(transactions).build();
 	}
 
 
@@ -71,7 +68,6 @@ public class TransactionResource {
 		
 		
 		return Response.status(Status.OK)
-				.header("Access-Control-Allow-Origin", "*")
 				.entity(balance)
 				.build();
 	}
