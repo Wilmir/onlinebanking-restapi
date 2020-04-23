@@ -1,5 +1,6 @@
 package nci.wilmir.onlinebanking.services;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -16,7 +17,6 @@ public class AccountService {
 	
 	
 	public AccountService() {
-		System.out.println("A new Account Service isntance has been created");
 	}
 	
 	
@@ -60,6 +60,18 @@ public class AccountService {
 		account.setSortCode(Account.SORTCODE);
 		account.setAccountNumber(generateAccountNumber(customerId));
 		account.setTransactions(new LinkedList<Transaction>());
+		if(account.getCurrentBalance() > 0) {
+			Transaction transaction = new Transaction();
+			transaction.setId(1);
+			transaction.setCredit(true);
+			transaction.setDebit(false);
+			transaction.setCreatedDate(new Date());
+			transaction.setDescription("Lodged " + account.getCurrentBalance() + " euros");
+			transaction.setTransactionAmount(account.getCurrentBalance());
+			transaction.setPostTransactionBalance(account.getCurrentBalance());
+			account.getTransactions().add(transaction);
+			System.out.println(transaction.getDescription());
+		}
 		
 		
 		customer.getAccounts().add(account);
@@ -99,7 +111,7 @@ public class AccountService {
 	//Helper method to generate random account numbers
 	private int generateAccountNumber(int customerId) {
 		Random random = new Random();
-		int accountNumber = random.nextInt(999999999) + customerId + 999999999;
+		int accountNumber = random.nextInt(90000000) + 1000000;
 		return accountNumber;
 	}
 

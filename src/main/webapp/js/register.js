@@ -63,11 +63,11 @@ function clearRegistrationForm(name, email, password, address){
 function confirmSuccessfulRegistration(name){
     const div = document.createElement('div');
     div.innerHTML = `<div> Hi ${name}! Your profile has successfully been created.</div>`;
+    notice.innerHTML = ``;
     notice.style.visibility = "visible";
     signupModal.style.display = "none";
     notice.appendChild(div);
     setTimeout(function(){
         notice.style.visibility = "hidden";
-        div.innerHTML = ``;
     },5000);
 }

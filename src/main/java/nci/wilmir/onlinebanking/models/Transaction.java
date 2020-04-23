@@ -1,5 +1,6 @@
 package nci.wilmir.onlinebanking.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -10,10 +11,12 @@ public class Transaction {
 	private int id;
 	private boolean isDebit;
 	private boolean isCredit;
-	private Date createdDate;
+	private String createdDate;
 	private String description;
 	private double transactionAmount;
+	private double postTransactionBalance;
 	private LinkedList<Link> links;
+	private SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm z");
 	
 	public Transaction(){
 
@@ -23,7 +26,7 @@ public class Transaction {
 		this.id = id;
 		this.isDebit = isDebit;
 		this.isCredit = isCredit;
-		this.createdDate = new Date();
+		this.createdDate = formatDate.format(new Date());
 		this.description = description;
 		this.transactionAmount = transactionAmount;
 	}
@@ -52,12 +55,12 @@ public class Transaction {
 		this.isCredit = isCredit;
 	}
 
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return createdDate;
 	}
 
 	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+		this.createdDate = formatDate.format(createdDate);
 	}
 
 	public String getDescription() {
@@ -74,6 +77,14 @@ public class Transaction {
 
 	public void setTransactionAmount(double transactionAmount) {
 		this.transactionAmount = transactionAmount;
+	}
+
+	public double getPostTransactionBalance() {
+		return postTransactionBalance;
+	}
+
+	public void setPostTransactionBalance(double postTransactionBalance) {
+		this.postTransactionBalance = postTransactionBalance;
 	}
 
 	public LinkedList<Link> getLinks() {

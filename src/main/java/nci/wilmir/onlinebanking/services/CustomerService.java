@@ -13,7 +13,6 @@ public class CustomerService {
 	
 	
 	public CustomerService() {
-		System.out.println("A new customer Service isntance has been created");
 	}
 	
 	

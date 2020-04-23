@@ -10,10 +10,11 @@
 </head>
     <body>
         <div class = "main">
+            <div id = "notice">This is a notice</div>
             <div class = "entry">
                 <div class = "widget login">            
                     <div class = "form" id = "login">
-                        <div class = "title">Login</div>
+                        <div class = "title">Online Bank</div>
                         <form>
                             <input type = "text" name="email" id="email" placeholder = "Email Address" required><br>
                             
@@ -26,23 +27,42 @@
                         <div class = "signupquestion">Not Registered? <span id = "signupoption">Sign Up</span></div>
                     </div>
                 </div>
-                <div id = "notice"></div>
-
             </div>
             
-            <div class = "customer-container">
-                <div class = "customer-header">
+            <div class = "container">
+                <div class = "customer-container">
+                    <div class = "customer-greeting title"></div>
+                    <div class = "customer-body">
+                        <div class = "customer-info">
+                            <div class = "customer-header">
 
-                </div>
-                <div class = "customer-body">
-                    <div class = "accounts-section">
+                            </div>
+                            <div class = "accounts-counter">
 
+                            </div>
+                            <div class = "new-account-form account-card">
+                                <button class = "new-account-button">Open A New Account</button>
+                            </div>
+                            <div class = "accounts-section">
+
+                            </div>
+                        </div>
+                        <div class = "account-info">
+                            <div class = "account-header">
+                                <div class = "transactions-counter">
+
+                                </div>
+                                <div class = "transactions-header">
+    
+                                </div>
+                            </div>
+                            <div class = "transactions-details">
+
+                            </div>     
+                        </div>
                     </div>
-                    <div class = "transactions-section">
-                        
-                    </div>
-                </div>
-            </div>  
+                </div>  
+            </div>
         </div>    
 
         <div class = "modalSignUp">
@@ -64,16 +84,19 @@
                             </div>
                         </form>
                     </div>
-                </div>	
+                </div>
             </div>
         </div>
 
         <script src = "./js/register.js"></script>
+        <script src = "./js/signUpModal.js"></script>
         <script src = "./js/login.js"></script>
         <script src = "./js/loadCustomer.js"></script>
+        <script src = "./js/loadAccounts.js"></script>
         <script src = "./js/addAccount.js"></script>
-        <script src = "./js/signUpModal.js"></script>
-
+        <script src = "./js/deleteAccount.js"></script>
+        <script src = "./js/loadSingleAccount.js"></script>
+        <script src = "./js/transactionModal.js"></script>
 
     </body>
 </html>
